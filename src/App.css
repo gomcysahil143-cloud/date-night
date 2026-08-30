@@ -281,6 +281,7 @@ body {
   position: relative;
 
   width: 100%;
+  overflow: visible;
 }
 
 /* Closed dropdown */
@@ -366,9 +367,11 @@ body {
   box-shadow:
     0 15px 35px rgba(0, 0, 0, 0.13);
 
-  z-index: 100;
+  z-index: 1000;
 
-  overflow: hidden;
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -891,5 +894,35 @@ body {
   background: #e83e78 !important;
 
   transform: translateY(-1px);
+}
+
+.custom-activity-input {
+  width: 100%;
+  height: 52px;
+  margin-top: 12px;
+  padding: 0 16px;
+
+  background: #ffffff !important;
+  color: #000000 !important;
+
+  border: 1px solid #e5d8de;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  outline: none;
+}
+
+.custom-activity-input::placeholder {
+  color: #777777 !important;
+  opacity: 1;
+}
+
+.custom-activity-input:focus {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ff5c97;
+  box-shadow: 0 0 0 3px rgba(255, 92, 151, 0.12);
 }
 }
