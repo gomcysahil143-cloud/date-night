@@ -968,4 +968,53 @@ body {
     box-sizing: border-box;
   }
 }
+
+/* FIX MOBILE DATE TEXT ALIGNMENT */
+
+.date-input-wrapper {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.date-input-wrapper input[type="date"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+
+  padding-left: 18px !important;
+  padding-right: 60px !important;
+
+  color: #222 !important;
+  background: #ffffff !important;
+}
+
+/* Fix native date formatting on mobile browsers */
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit {
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.date-input-wrapper
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0 !important;
+}
+
+.date-input-wrapper
+  input[type="date"]::-webkit-datetime-edit-text {
+  padding: 0 2px !important;
+}
+
+.date-input-wrapper
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0 !important;
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  cursor: pointer;
+}
 }
