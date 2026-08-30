@@ -9,1012 +9,416 @@ body {
   color: #222;
 }
 
-/* =========================
-   PAGE
-========================= */
-
+/* PAGE */
 .page {
   min-height: 100vh;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 50px 20px;
-
   position: relative;
   overflow: hidden;
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
-
+/* FLOATING HEARTS */
 .floating-heart {
   position: absolute;
   font-size: 35px;
   opacity: 0.45;
-
   animation: float 5s ease-in-out infinite;
-
   pointer-events: none;
 }
 
-.heart1 {
-  top: 12%;
-  left: 10%;
-}
-
-.heart2 {
-  top: 25%;
-  right: 12%;
-  animation-delay: 1s;
-}
-
-.heart3 {
-  bottom: 15%;
-  left: 15%;
-  animation-delay: 2s;
-}
+.heart1 { top: 12%; left: 10%; }
+.heart2 { top: 25%; right: 12%; animation-delay: 1s; }
+.heart3 { bottom: 15%; left: 15%; animation-delay: 2s; }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
-/* =========================
-   MAIN CARD
-========================= */
-
+/* MAIN CARD */
 .card {
   width: min(680px, 100%);
-
   background: rgba(255, 255, 255, 0.97);
-
   border-radius: 28px;
-
   padding: 50px 55px;
-
-  box-shadow:
-    0 20px 60px rgba(220, 80, 130, 0.18);
-
+  box-shadow: 0 20px 60px rgba(220, 80, 130, 0.18);
   border: 1px solid rgba(255, 160, 190, 0.35);
-
   position: relative;
-
   z-index: 2;
 }
 
-/* =========================
-   HEADER
-========================= */
-
+/* HEADER */
 .heart-icon {
   font-size: 55px;
-
   text-align: center;
-
   margin-bottom: 8px;
 }
 
 .card h1 {
   text-align: center;
-
   font-size: 36px;
-
   color: #d9366e;
-
   margin: 0 0 14px;
-
   line-height: 1.2;
 }
 
 .card > p {
   text-align: center;
-
   color: #666;
-
   font-size: 16px;
-
   line-height: 1.7;
-
   max-width: 520px;
-
   margin: 0 auto 35px;
 }
 
-/* =========================
-   SECTIONS
-========================= */
-
+/* SECTIONS */
 .section {
+  width: 100%;
   margin-top: 28px;
+  position: relative;
 }
 
 .section h3 {
   font-size: 17px;
-
   color: #333;
-
   margin: 0 0 10px;
-
   font-weight: 600;
+  text-align: center;
 }
 
-/* =========================
-   DATE INPUT
-========================= */
-
+/* CUSTOM DATE FIELD */
 .date-input-wrapper {
   position: relative;
-
   width: 100%;
-}
-
-.date-input-wrapper input[type="date"] {
-  width: 100%;
-
   height: 52px;
+  max-width: 100%;
+}
 
-  padding: 0 55px 0 15px;
-
-  background: #ffffff !important;
-
-  color: #222222 !important;
-
+.date-display {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 60px 0 15px;
+  background: #fff;
+  color: #222;
   border: 1px solid #e5d8de;
-
   border-radius: 12px;
-
   font-size: 15px;
-
   font-family: inherit;
+  pointer-events: none;
+}
 
-  outline: none;
+.date-placeholder { color: #777; }
 
+/* Native input opens the real phone calendar when the field is tapped */
+.hidden-date-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  border: 0;
   cursor: pointer;
-
-  color-scheme: light;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  z-index: 2;
 }
 
-.date-input-wrapper input[type="date"]:hover {
-  border-color: #ff70a5;
-}
-
-.date-input-wrapper input[type="date"]:focus {
-  border-color: #ff5c97;
-
-  box-shadow:
-    0 0 0 3px rgba(255, 92, 151, 0.12);
-}
-
-/* Date text */
-
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit,
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit-text,
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit-month-field,
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit-day-field,
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit-year-field {
-  color: #222222 !important;
-}
-
-/* Hide browser calendar icon */
-
-.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0 !important;
-
-  display: none !important;
-}
-
-/* =========================
-   PROFESSIONAL CALENDAR
-========================= */
-
+/* Calendar icon is above the native input and explicitly opens the picker */
 .calendar-button {
   position: absolute;
-
   right: 14px;
-
   top: 50%;
-
   transform: translateY(-50%);
-
   width: 32px;
-
   height: 32px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   padding: 0;
-
   border: none;
-
   background: transparent;
-
-  color: #000000;
-
+  color: #000;
   cursor: pointer;
-
   border-radius: 7px;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  z-index: 3;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.calendar-button:hover {
-  background: #ffe7ef;
-
-  transform: translateY(-50%) scale(1.05);
-}
+.calendar-button:hover { background: #ffe7ef; }
+.calendar-button:active { transform: translateY(-50%) scale(0.96); }
 
 .calendar-icon {
   width: 20px;
-
   height: 20px;
-
-  color: #000000;
-
   display: block;
 }
 
-/* =========================
-   CUSTOM DROPDOWN
-========================= */
-
+/* CUSTOM DROPDOWN */
 .custom-dropdown {
   position: relative;
-
   width: 100%;
   overflow: visible;
 }
 
-/* Closed dropdown */
-
 .dropdown-button {
   width: 100%;
-
   min-height: 52px;
-
   padding: 0 16px;
-
-  background: #ffffff;
-
-  color: #222222;
-
+  background: #fff;
+  color: #222;
   border: 1px solid #e5d8de;
-
   border-radius: 12px;
-
   font-size: 15px;
-
   font-family: inherit;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   cursor: pointer;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dropdown-button:hover {
   border-color: #ff70a5;
-
-  box-shadow:
-    0 4px 14px rgba(255, 105, 160, 0.12);
+  box-shadow: 0 4px 14px rgba(255, 105, 160, 0.12);
 }
 
-.dropdown-button .placeholder {
-  color: #777777;
+.dropdown-button.dropdown-active {
+  border-color: #ff5c97;
+  box-shadow: 0 0 0 3px rgba(255, 92, 151, 0.1);
 }
 
-/* Arrow */
+.dropdown-button .placeholder { color: #777; }
+.dropdown-button .selected-count { color: #222; }
 
 .arrow {
+  color: #000;
   font-size: 18px;
-
-  color: #e83e78;
-
+  line-height: 1;
   transition: transform 0.2s ease;
 }
 
-.arrow.open {
-  transform: rotate(180deg);
-}
+.arrow.open { transform: rotate(180deg); }
 
-/* =========================
-   DROPDOWN MENU
-========================= */
-
+/* SCROLLABLE DROPDOWN */
 .dropdown-menu {
   position: absolute;
-
   top: calc(100% + 7px);
-
   left: 0;
-
   width: 100%;
-
-  background: #ffffff;
-
-  border: 1px solid #f0dfe6;
-
-  border-radius: 14px;
-
-  padding: 7px;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.13);
-
-  z-index: 1000;
-
-  max-height: 250px;
+  max-height: 280px;
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border: 1px solid #f0dfe6;
+  border-radius: 14px;
+  padding: 7px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.13);
+  z-index: 100;
 }
 
-/* =========================
-   DROPDOWN OPTIONS
-========================= */
-
 .dropdown-option {
+  width: 100%;
+  border: none;
+  text-align: left;
   padding: 13px 14px;
-
-  color: #222222;
-
-  background: #ffffff;
-
+  color: #222;
+  background: #fff;
+  font-family: inherit;
   font-size: 15px;
-
   border-radius: 9px;
-
   cursor: pointer;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
 }
 
 .dropdown-option:hover {
   background: #ffe1ec;
-
   color: #d92f6a;
 }
 
 .dropdown-option.selected {
   background: #ffd4e3;
-
   color: #d92f6a;
-
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .checkmark {
   color: #e83e78;
-
   font-size: 17px;
-
   font-weight: bold;
 }
 
-/* =========================
-   DONE BUTTON
-========================= */
-
-.dropdown-done {
+/* OTHER ACTIVITY INPUT */
+.custom-activity-input {
   width: 100%;
-
-  margin-top: 6px;
-
-  padding: 11px;
-
-  border: none;
-
-  border-radius: 9px;
-
-  background: #ff5c97;
-
-  color: white;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
-}
-
-.dropdown-done:hover {
-  background: #e83e78;
-
-  transform: translateY(-1px);
-}
-
-/* =========================
-   SELECTED ACTIVITY TAGS
-========================= */
-
-.selected-plans {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 8px;
-
+  max-width: 100%;
+  min-width: 0;
+  height: 52px;
   margin-top: 12px;
+  padding: 0 16px;
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #e5d8de;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.selected-tag {
-  background: #ffe1ec;
-
-  color: #d92f6a;
-
-  border-radius: 20px;
-
-  padding: 7px 12px;
-
-  font-size: 13px;
-
-  font-weight: 500;
+.custom-activity-input::placeholder {
+  color: #777 !important;
+  opacity: 1;
 }
 
-/* =========================
-   SUBMIT BUTTON
-========================= */
+.custom-activity-input:hover { border-color: #ff70a5; }
 
+.custom-activity-input:focus {
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #ff5c97;
+  box-shadow: 0 0 0 3px rgba(255, 92, 151, 0.12);
+}
+
+/* SUBMIT */
 .btn {
   width: 100%;
-
   height: 54px;
-
   margin-top: 35px;
-
   border: none;
-
   border-radius: 14px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff5c97,
-      #e83e78
-    );
-
-  color: white;
-
+  background: linear-gradient(135deg, #ff5c97, #e83e78);
+  color: #fff;
   font-size: 16px;
-
   font-weight: 600;
-
   cursor: pointer;
-
-  box-shadow:
-    0 8px 20px rgba(232, 62, 120, 0.22);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(232, 62, 120, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 25px rgba(232, 62, 120, 0.3);
+  box-shadow: 0 12px 25px rgba(232, 62, 120, 0.3);
 }
 
-.btn:active {
-  transform: translateY(0);
-}
+.btn:active { transform: translateY(0); }
 
-/* =========================
-   POPUP OVERLAY
-========================= */
-
+/* POPUP */
 .popup-overlay {
   position: fixed;
-
   inset: 0;
-
   background: rgba(50, 20, 35, 0.45);
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   padding: 20px;
-
   z-index: 1000;
 }
 
-/* =========================
-   CONFIRMATION POPUP
-========================= */
-
 .popup-card {
   width: min(480px, 100%);
-
-  background: white;
-
+  background: #fff;
   border-radius: 25px;
-
   padding: 40px;
-
   text-align: center;
-
-  box-shadow:
-    0 25px 70px rgba(0, 0, 0, 0.2);
-
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
   animation: popupIn 0.25s ease;
 }
 
 @keyframes popupIn {
-  from {
-    opacity: 0;
-
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.popup-heart {
-  font-size: 50px;
-
-  margin-bottom: 5px;
-}
+.popup-heart { font-size: 50px; margin-bottom: 5px; }
 
 .popup-card h2 {
   color: #d9366e;
-
   font-size: 30px;
-
   margin: 10px 0 15px;
 }
 
 .confirmation-date {
   font-size: 17px;
-
   font-weight: 600;
-
   color: #333;
-
   margin: 20px 0 12px;
 }
 
 .confirmation-plans {
-  color: #d92f6a !important;
-
+  color: #d92f6a;
   font-weight: 600;
-
   font-size: 15px;
-
   line-height: 1.7;
-
   margin: 0;
 }
 
 .confirmation-message {
-  margin-top: 20px !important;
-
-  color: #666 !important;
-
+  margin-top: 20px;
+  color: #666;
   font-size: 14px;
 }
-
-/* =========================
-   POPUP BUTTON
-========================= */
 
 .close-btn {
   margin-top: 18px;
-
   padding: 12px 25px;
-
   border: none;
-
   border-radius: 12px;
-
   background: #ffe1ec;
-
   color: #d92f6a;
-
   font-weight: 600;
-
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
 }
 
-.close-btn:hover {
-  background: #ffc8da;
-
-  transform: translateY(-1px);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media (max-width: 600px) {
   .page {
     padding: 20px 14px;
+    align-items: center;
   }
 
   .card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 35px 25px;
-
     border-radius: 22px;
   }
 
-  .card h1 {
-    font-size: 29px;
-  }
-
-  .card > p {
-    font-size: 14px;
-  }
-
-  .heart-icon {
-    font-size: 48px;
-  }
-
-  .floating-heart {
-    font-size: 25px;
-  }
-
-  .popup-card {
-    padding: 32px 24px;
-  }
-
-  .popup-card h2 {
-    font-size: 27px;
-  }
-
-  /* =========================
-   ACTIVITY DROPDOWN - FINAL
-========================= */
-
-.dropdown-button {
-  width: 100%;
-  height: 52px;
-
-  padding: 0 16px;
-
-  background: #ffffff !important;
-  color: #222222 !important;
-
-  border: 1px solid #ded5da;
-  border-radius: 12px;
-
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  cursor: pointer;
-
-  outline: none;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-/* Placeholder text */
-
-.dropdown-button .placeholder {
-  color: #777777 !important;
-}
-
-/* Selected count */
-
-.dropdown-button .selected-count {
-  color: #222222 !important;
-}
-
-/* Hover */
-
-.dropdown-button:hover {
-  background: #ffffff !important;
-
-  border-color: #ff70a5;
-
-  box-shadow:
-    0 4px 14px rgba(255, 105, 160, 0.12);
-}
-
-/* When dropdown is open */
-
-.dropdown-button.dropdown-active {
-  border-color: #ff5c97;
-
-  box-shadow:
-    0 0 0 3px rgba(255, 92, 151, 0.10);
-}
-
-/* Arrow */
-
-.dropdown-button .arrow {
-  color: #000000;
-
-  font-size: 18px;
-
-  line-height: 1;
-
-  transition: transform 0.2s ease;
-}
-
-.dropdown-button .arrow.open {
-  transform: rotate(180deg);
-}
-
-/* Dropdown menu */
-
-.dropdown-menu {
-  margin-top: 7px;
-
-  background: #ffffff !important;
-
-  border: 1px solid #eadde2;
-
-  border-radius: 14px;
-
-  padding: 7px;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.13);
-}
-
-/* Options */
-
-.dropdown-option {
-  background: #ffffff !important;
-
-  color: #222222 !important;
-
-  padding: 13px 14px;
-
-  border-radius: 9px;
-
-  font-size: 15px;
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-/* Pink hover */
-
-.dropdown-option:hover {
-  background: #ffe1ec !important;
-
-  color: #d92f6a !important;
-}
-
-/* Selected option */
-
-.dropdown-option.selected {
-  background: #ffd4e3 !important;
-
-  color: #d92f6a !important;
-
-  font-weight: 600;
-}
-
-/* Checkmark */
-
-.checkmark {
-  color: #e83e78 !important;
-
-  font-size: 17px;
-
-  font-weight: bold;
-}
-
-/* Done */
-
-.dropdown-done {
-  width: 100%;
-
-  margin-top: 7px;
-
-  padding: 11px;
-
-  border: none;
-
-  border-radius: 9px;
-
-  background: #ff5c97 !important;
-
-  color: #ffffff !important;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
-}
-
-.dropdown-done:hover {
-  background: #e83e78 !important;
-
-  transform: translateY(-1px);
-}
-
-.custom-activity-input {
-  width: 100%;
-  height: 52px;
-  margin-top: 12px;
-  padding: 0 16px;
-
-  background: #ffffff !important;
-  color: #000000 !important;
-
-  border: 1px solid #e5d8de;
-  border-radius: 12px;
-
-  font-size: 15px;
-  font-family: inherit;
-
-  outline: none;
-}
-
-.custom-activity-input::placeholder {
-  color: #777777 !important;
-  opacity: 1;
-}
-
-.custom-activity-input:focus {
-  background: #ffffff !important;
-  color: #000000 !important;
-  border-color: #ff5c97;
-  box-shadow: 0 0 0 3px rgba(255, 92, 151, 0.12);
-}
-
-/* =========================
-   MOBILE DATE INPUT FIX
-========================= */
-
-@media (max-width: 600px) {
-  .date-input-wrapper {
-    position: relative;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow: hidden;
-  }
-
-  .date-input-wrapper input[type="date"] {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-
-    box-sizing: border-box !important;
-
-    padding-left: 15px !important;
-    padding-right: 50px !important;
-
-    font-size: 14px !important;
-
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .section {
+  .card h1 { font-size: 29px; }
+  .card > p { font-size: 14px; }
+  .heart-icon { font-size: 48px; }
+  .floating-heart { font-size: 25px; }
+
+  .section,
+  .date-input-wrapper,
+  .custom-dropdown {
     width: 100%;
     max-width: 100%;
     min-width: 0;
   }
 
-  .card {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+  .date-display {
+    padding-left: 15px;
+    padding-right: 60px;
+    font-size: 15px;
   }
-}
 
-/* FIX MOBILE DATE TEXT ALIGNMENT */
+  .dropdown-menu { max-height: 260px; }
 
-.date-input-wrapper {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.date-input-wrapper input[type="date"] {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-
-  text-align: left !important;
-
-  padding-left: 18px !important;
-  padding-right: 60px !important;
-
-  color: #222 !important;
-  background: #ffffff !important;
-}
-
-/* Fix native date formatting on mobile browsers */
-.date-input-wrapper input[type="date"]::-webkit-datetime-edit {
-  padding: 0 !important;
-  text-align: left !important;
-}
-
-.date-input-wrapper
-  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-  padding: 0 !important;
-}
-
-.date-input-wrapper
-  input[type="date"]::-webkit-datetime-edit-text {
-  padding: 0 2px !important;
-}
-
-.date-input-wrapper
-  input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0 !important;
-  position: absolute;
-  right: 0;
-  width: 60px;
-  height: 100%;
-  cursor: pointer;
-}
+  .popup-card { padding: 32px 24px; }
+  .popup-card h2 { font-size: 27px; }
 }
