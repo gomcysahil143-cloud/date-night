@@ -12,6 +12,7 @@ export default function App() {
   const options = [
     "Coffee date",
     "Dinner",
+    "Long Drive",
     "Movie night",
     "Walk in the park",
     "Dessert",
