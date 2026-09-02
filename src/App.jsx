@@ -65,7 +65,7 @@ export default function App() {
       await emailjs.send(
         "service_o3mksn9",
         "template_8k4zq0w",
-        { date, plans: selectedActivity },
+        { date, activities: selectedActivity },
         "X1ZuAutjtNdG2QsdW"
       );
       setShowPopup(true);
